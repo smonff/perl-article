@@ -103,7 +103,7 @@ $parser->output_under("/tmp");
 $entity = $parser->parse_open($mfile);
 
 push @mailBody, "<br/>";
-&dump_entity($entity);
+dump_entity($entity);
 push @mailBody, "<br/>";
 push @mailBody, @mailText;
 

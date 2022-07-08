@@ -37,7 +37,7 @@ sub queryapi {
 }
 
 for $ip (keys %cntryHash) {
-    &queryapi($ip);
+    queryapi($ip);
 }
 
 %outh = ();
