@@ -68,12 +68,12 @@ sub check_mta {
             Timeout => 15
             );
     if($sock) {
-        &resume_relay;
+        resume_relay();
     }
 
 }
 
-&pass_thro;
+pass_thro();
 
 Proc::Daemon::Init();
 die "Already running!" if Proc::PID::File->running();
@@ -81,7 +81,7 @@ for(;;) {
     syslog("info", "Running in pass thro' mode");
     syslog("info", "Sleeping 2 minutes");
     sleep(120);
-    &refresh_mtaip;
-    $res = &check_mta;
+    refresh_mtaip();
+    $res = check_mta();
 }
 

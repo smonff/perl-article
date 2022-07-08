@@ -88,9 +88,9 @@ sub query_quarantine {
  
 # XXX execution start
 %outh = ();
-&getstats;
-&query_mails;
-&query_quarantine;
+getstats();
+query_mails();
+query_quarantine();
 $outh{"Mails"} = $mail_count;
 $outh{"Quarantined"} = $qua_count;
  
