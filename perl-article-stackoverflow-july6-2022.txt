@@ -13,6 +13,7 @@ might think it’s dead. It’s far from dead, and is still very relevant to
 software engineering today. 
 
 What makes it special?
+
 Perl is a high-level language. It is weakly typed , has synchronous
 flow, and is an interpreted language. It has garbage collection and
 excellent memory management. Perl 5 is open source and free to
