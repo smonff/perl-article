@@ -8,11 +8,12 @@ You may have used it for occasional sys admin tasks, in your tool chain,
 or to enhance some shell scripts that needed more gas. But Perl is more
 than just scripting. 
 
-But from the amount of talk about Perl on Reddit or Stack Overflow, you
+From the amount of talk about Perl on Reddit or Stack Overflow, you
 might think it’s dead. It’s far from dead, and is still very relevant to
 software engineering today. 
 
 What makes it special?
+
 Perl is a high-level language. It is weakly typed , has synchronous
 flow, and is an interpreted language. It has garbage collection and
 excellent memory management. Perl 5 is open source and free to
@@ -31,7 +32,7 @@ or server processes that run in the background. We can easily invoke a
 Perl daemon to avoid spending hours working on C and avoid several
 security flaws.
 
-Like npm for node.js, Perl has a vibrant development community in CPAN,
+Like npm for node.js, Perl has a vibrant development community in [CPAN](https://metacpan.org/),
 with a vast archive of Perl modules. You can find a module to do
 anything you want. Most modules are written in pure Perl without
 resorting to C, though some performance intensive modules have an XS
