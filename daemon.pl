@@ -10,9 +10,9 @@ use IO::Socket::INET;
 sub refresh_mtaip {
     local $/;
 # XXX read spamcheetah config and store vals
-    open F, "/etc/spamcheetah.json";
-    $conf = <F>;
-    close(F);
+    open my $conf_fh, '<', "/etc/spamcheetah.json";
+    $conf = <$conf_fh>;
+    close($conf_fh);
     $json = JSON->new;
     $dec = $json->decode($conf);
     %schash = %$dec;
