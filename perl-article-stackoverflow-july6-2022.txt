@@ -8,7 +8,7 @@ You may have used it for occasional sys admin tasks, in your tool chain,
 or to enhance some shell scripts that needed more gas. But Perl is more
 than just scripting. 
 
-But from the amount of talk about Perl on Reddit or Stack Overflow, you
+From the amount of talk about Perl on Reddit or Stack Overflow, you
 might think it’s dead. It’s far from dead, and is still very relevant to
 software engineering today. 
 
