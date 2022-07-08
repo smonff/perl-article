@@ -1,7 +1,7 @@
-# perl-article
+# Stack Overflow "Perl is still relevant in 2022" blog post 
 
-Fix perl article and code
+## Objectives
 
-## collaboring with @smoff for article
+- Review [perl article](https://stackoverflow.blog/2022/07/06/why-perl-is-still-relevant-in-2022/) on Stack Overflow blogging platform
+- Improve the code examples to reflect contemporary practices as of 2022  
 
-Attempt is to fix source code as well as text.
