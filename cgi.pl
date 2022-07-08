@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+
 use JSON;
 use CGI;
 use DBI;
@@ -5,14 +8,16 @@ use IO::Socket;
 use Sys::Syslog;
 use JSON;
  
-$q = CGI->new;
+my $q = CGI->new;
 print $q->header('application/json');
 openlog("Dashboard");
-$json = JSON->new;
+my $json = JSON->new;
 my $proxysock = "/tmp/proxysock";
 my $db = DBI->connect("dbi:Pg:host=/tmp", "postgres", undef, {AutoCommit
 => 1});
  
+my %outh;
+
 if(!defined($db)) {
 	print("error","Could not connect to Postgres db");
 }
@@ -22,10 +27,10 @@ sub getstats {
 			Peer => $proxysock);
 	print $proxy "DUMPSTATS";
  
-	@out = <$proxy>;
+	my @out = <$proxy>;
 	for(@out) {
 		chomp;
-		($parm,$n) = split/=/;
+		my ($parm,$n) = split/=/;
 		if ($parm eq "totalmailattemptcnt") {
 			$outh{"mails"}= $n;
 		} elsif ($parm eq "goodmailcnt") {
@@ -77,22 +82,23 @@ sub getstats {
 }
  
 sub query_mails {
-	$stmt = $db->prepare("select count(*) from mails;");
-	($mail_count) = $db->selectrow_array($stmt);
+	my $stmt = $db->prepare("select count(*) from mails;");
+	my ($mail_count) = $db->selectrow_array($stmt);
+
+	return $mail_count;
 }
  
 sub query_quarantine {
-	$stmt = $db->prepare("select count(*) from quamail;");
-	($qua_count) = $db->selectrow_array($stmt);
+	my $stmt = $db->prepare("select count(*) from quamail;");
+	my ($qua_count) = $db->selectrow_array($stmt);
+
+	return $qua_count;
 }
  
 # XXX execution start
-%outh = ();
 getstats();
-query_mails();
-query_quarantine();
-$outh{"Mails"} = $mail_count;
-$outh{"Quarantined"} = $qua_count;
+$outh{"Mails"} = query_mails();
+$outh{"Quarantined"} = query_quarantine;
  
 syslog("info", $json->canonical->pretty->encode(\%outh));
 print($json->canonical->pretty->encode(\%outh));

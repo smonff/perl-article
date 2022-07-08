@@ -1,4 +1,8 @@
 #!/usr/bin/perl
+
+use strict;
+use warnings;
+
 use Tie::File;
 use Sys::Syslog;
 use JSON;
@@ -6,16 +10,18 @@ use Proc::Daemon;
 use Proc::PID::File;
 use IO::Socket::INET;
 
+my $mtaip;
+my $mta;
 
 sub refresh_mtaip {
     local $/;
 # XXX read spamcheetah config and store vals
     open my $conf_fh, '<', "/etc/spamcheetah.json";
-    $conf = <$conf_fh>;
+    my $conf = <$conf_fh>;
     close($conf_fh);
-    $json = JSON->new;
-    $dec = $json->decode($conf);
-    %schash = %$dec;
+    my $json = JSON->new;
+    my $dec = $json->decode($conf);
+    my %schash = %$dec;
     $/ = "\n";
     $mtaip = $schash{'mtaip'};
 }
@@ -25,6 +31,7 @@ openlog("Activate_mta");
 
 sub resume_relay {
     syslog("info", "MTA is up resuming relay");
+    my @conf;
     tie @conf, "Tie::File", "/etc/pf.conf";
     for (@conf) {
         chomp();
@@ -47,6 +54,7 @@ sub resume_relay {
 }
 
 sub pass_thro {
+    my @conf;
     tie @conf, "Tie::File", "/etc/pf.conf";
     for (@conf) {
         chomp();
@@ -82,6 +90,6 @@ for(;;) {
     syslog("info", "Sleeping 2 minutes");
     sleep(120);
     refresh_mtaip();
-    $res = check_mta();
+    my $res = check_mta();
 }
 

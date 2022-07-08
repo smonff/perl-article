@@ -1,5 +1,8 @@
 #!/usr/bin/perl
 
+use strict;
+use warnings;
+
 use File::Basename;
 use lib dirname (__FILE__);
 use SpamCheetahDBQuery;
@@ -7,63 +10,63 @@ use IO::Socket;
 use JSON;
 use CGI;
 use Sys::Syslog;
-$q = CGI->new;
+my $q = CGI->new;
 $| = 1;
 
 openlog("GeoIP Countrywise");
 print $q->header('application/json');
-$ipsock = "/tmp/ipsock";
+my $ipsock = "/tmp/ipsock";
 
-@ips = SpamCheetahDBQuery::dbQuery("geoip");
+my @ips = SpamCheetahDBQuery::dbQuery("geoip");
 
-%cntryHash = (), %h = ();
+my %cntryHash = (), my %h = ();
 
-for $ip (@ips) {
+for my $ip (@ips) {
     $cntryHash{$ip} += 1;
 }
 
 sub queryapi {
-    ($ip) = @_;
+    my ($ip) = @_;
 
     my $ipjson = IO::Socket::UNIX->new(
             Type      => SOCK_STREAM,
             Peer => $ipsock);
     print $ipjson $ip . "\n";
     my $info = decode_json(<$ipjson>);
-    $cntry = $info->{'countryCode'}; 
-    $cntryName = $info->{'country'}; 
+    my $cntry = $info->{'countryCode'}; 
+    my $cntryName = $info->{'country'}; 
     $h{$ip} = "$cntry,$cntryName";
     syslog("info", "Country code $cntry");
 }
 
-for $ip (keys %cntryHash) {
+for my $ip (keys %cntryHash) {
     queryapi($ip);
 }
 
-%outh = ();
-%tmph = ();
-for $ip (keys(%cntryHash)) {
-    ($cntry, $name) = split /,/, $h{$ip};
+my %outh = ();
+my %tmph = ();
+for my $ip (keys(%cntryHash)) {
+    my ($cntry, $name) = split /,/, $h{$ip};
     $h{$cntry} += $cntryHash{$ip};
     $outh{$cntry} = { 'value' => $h{$cntry} };
     $tmph{$name} = "$cntry,$h{$cntry}";
 }
 
-@table = ();
-for $name (keys(%tmph)) {
-    ($code, $val) = split /,/, $tmph{$name};
+my @table = ();
+for my $name (keys(%tmph)) {
+    my ($code, $val) = split /,/, $tmph{$name};
     push @table, {"country" => $name,
         "code" => lc($code),
         "mails" =>  $val};
 }
 
-my @table = sort { $b->{'mails'} <=> $a->{'mails'} } @table;
+@table = sort { $b->{'mails'} <=> $a->{'mails'} } @table;
 
 if($#table gt 9) {
     @table = @table[0..9];
 }
 
-$json = JSON->new;
+my $json = JSON->new;
 if ($q->param('table')) {
     print($json->canonical->pretty->encode(\@table));
 } else {
