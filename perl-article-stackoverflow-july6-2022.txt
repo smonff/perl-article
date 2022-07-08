@@ -32,7 +32,7 @@ or server processes that run in the background. We can easily invoke a
 Perl daemon to avoid spending hours working on C and avoid several
 security flaws.
 
-Like npm for node.js, Perl has a vibrant development community in CPAN,
+Like npm for node.js, Perl has a vibrant development community in [CPAN](https://metacpan.org/),
 with a vast archive of Perl modules. You can find a module to do
 anything you want. Most modules are written in pure Perl without
 resorting to C, though some performance intensive modules have an XS
