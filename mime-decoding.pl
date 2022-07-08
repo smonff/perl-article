@@ -1,10 +1,13 @@
 #!/usr/bin/perl 
 
+use strict;
+use warnings;
+
 use JSON;
 use CGI;
 use DBI;
 use Sys::Syslog;
-use Broker;
+# use Broker;
 use Encode qw/decode/;
 use File::Basename;
 use MIME::Parser;
@@ -12,11 +15,11 @@ use File::Copy;
 use File::Glob;
 use File::Path;
 
-$q = CGI->new;
+my $q = CGI->new;
 print $q->header('application/json');
-$json = JSON->new;
-@mailBody =();
-@mailText =();
+my $json = JSON->new;
+my @mailBody =();
+my @mailText =();
 
 openlog("--Show one quamail...  :");
 
@@ -68,12 +71,11 @@ sub dump_entity {
                 print "$0: couldn't find/open '$name': $!";
             }
 
-        } else {                                 # binary: just
-summarize it...
+        } else {                                 # binary: just summarize it...
             my $path = $body->path;
             my $size = ($path ? (-s $path) : '???');
 
-            $f = basename($path);
+            my $f = basename($path);
 
             push @mailBody, "<p>Attached <a href=\"/$path\">$f<a> Size::
 $size bytes </p>";
@@ -82,13 +84,13 @@ $size bytes </p>";
     1;
 }
 
-$id = $q->param('id');
+my $id = $q->param('id');
 
-$stmt = "select envip,mailfile,headers,subject,size,fromid,toid,date
+my $stmt = "select envip,mailfile,headers,subject,size,fromid,toid,date
 from quamail where id = $id";
 
-@row = $db->selectrow_array($stmt);
-($envip,$mailfile, $headers, $sub, $size, $from , $to, $date) = @row;
+my @row = $db->selectrow_array($stmt);
+my ($envip,$mailfile, $headers, $sub, $size, $from , $to, $date) = @row;
 
 push @mailBody, "<strong>From</strong>: $from<br/>";
 push @mailBody, "<strong>To</strong>: $to<br/>";
@@ -97,18 +99,18 @@ push @mailBody, "<strong>Subject</strong>: $sub<br/>";
 
 push @mailBody, "<br/>";
 
-$mfile = "/quamail/$mailfile";
-$parser = MIME::Parser->new;
+my $mfile = "/quamail/$mailfile";
+my $parser = MIME::Parser->new;
 $parser->output_under("/tmp");
-$entity = $parser->parse_open($mfile);
+my $entity = $parser->parse_open($mfile);
 
 push @mailBody, "<br/>";
 dump_entity($entity);
 push @mailBody, "<br/>";
 push @mailBody, @mailText;
 
-$h = {'mailBody' => [@mailBody]};
+my $h = {'mailBody' => [@mailBody]};
 print($json->pretty->encode($h));
-@delfiles=</tmp/msg*>;
-$ign = rmtree(@delfiles, {verbose => 0});
+my @delfiles=</tmp/msg*>;
+my $ign = rmtree(@delfiles, {verbose => 0});
 
