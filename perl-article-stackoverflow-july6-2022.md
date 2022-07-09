@@ -110,7 +110,8 @@ hash.update(data);
 console.log(hash.copy().digest('hex'));
 ```
 
-In Perl there are two ways. One is the functional approach:
+In Perl let's examine two ways (more could be possible). One is the functional 
+approach:
 
 ```perl
 use Digest::SHA qw(sha256_hex);
