@@ -71,15 +71,24 @@ like. You can create daemons—small, constantly running programs—that
 will automatically take actions when their conditions are met. You can
 even [create build pipelines and automate unit tests](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example). 
 
-## A simpler way to code
+## A simpler way to code, with flexibility when needed
 
 In today’s event-loop-centric asynchronous world of JavaScript, node.js,
-and TypeScript, Perl offers a very straight-forward code flow, and Perl
-code offers simplicity and control.
+and TypeScript, Perl offers a very straight-forward code flow, simplicity 
+and control.
 
 The fact that code flows synchronously makes a big difference in
 debugging and getting started writing working code. Perl has supported
 threads for long time, but I have never used them. 
+
+In case you need the asynchronous paradigm, depsite it is not allowed at the Perl's 
+core, it is possible to implement it with modules. An robust example is  
+[`Future::AsyncAwait`](https://metacpan.org/pod/Future::AsyncAwait)) that 
+*provides syntax for deferring and resuming subroutines* with the `async` 
+and `await keywords`. An alternative can be 
+[`Mojo::Promise`](https://metacpan.org/pod/Mojo::Promise), a _Perl-ish 
+implementation of [Promises/A+](https://promisesaplus.com/) and a superset 
+of [ES6 Promises](https://duckduckgo.com/?q=\mdn%20Promise)_.  
 
 Perl is best run in single tasks—on its own, it is not a language with
 great performance. If you wanted performance today, you have JavaScript
