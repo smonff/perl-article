@@ -9,5 +9,8 @@ After initial publication of the [blog post](https://stackoverflow.blog/2022/07/
 
 ## How to contribute
 
-Use the markdown file. For code examples, prefer the the `.pl` files we'll add them to the article in the end. It will allow to test the code in an easier way.
+- Use the [`perl-article-stackoverflow-july6-2022.md `markdown file](https://github.com/girish1729/perl-article/blob/main/perl-article-stackoverflow-july6-2022.md) for article review and contributions. 
+- For code examples, prefer the the `.pl` files.  We'll add them to the article in the end. It will allow to test the code in an easier way.
+
+A [draft version of the article is available](https://github.com/girish1729/perl-article/blob/main/strong-case-for-perl.md), but shouldn't be used for the reviews. 
 
