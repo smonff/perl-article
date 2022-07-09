@@ -1,18 +1,22 @@
+# Why perl is still hugely relevant for solving world’s computing problems
+
 If you love UNIX/Linux/BSD like me, then you have definitely learnt Perl
 and programmed in it. I am pretty certain you have also used Perl more
 than once, perhaps several times. The language was created in 1987 as a
 general purpose UNIX scripting language, but has undergone many changes
-since then (even spawning another programming language, Raku). 
+since then (even spawning another programming language, 
+[Raku](https://raku.org)). 
 
 You may have used it for occasional sys admin tasks, in your tool chain,
 or to enhance some shell scripts that needed more gas. But Perl is more
 than just scripting. 
 
-But from the amount of talk about Perl on Reddit or Stack Overflow, you
+From the amount of talk about Perl on Reddit or Stack Overflow, you
 might think it’s dead. It’s far from dead, and is still very relevant to
 software engineering today. 
 
-What makes it special?
+## What makes it special?
+
 Perl is a high-level language. It is weakly typed , has synchronous
 flow, and is an interpreted language. It has garbage collection and
 excellent memory management. Perl 5 is open source and free to
@@ -29,13 +33,14 @@ this. As a result, it excels at pipes, file slurping, inter-process
 communication and other geeky tasks. Like C, it can create UNIX daemons
 or server processes that run in the background. We can easily invoke a
 Perl daemon to avoid spending hours working on C and avoid several
-security flaws.
+[security flaws](https://portswigger.net/daily-swig/c-is-least-secure-programming-language-study-claims#:~:text=The%20top%20vulnerabilities%20found%20in,programming%20language%20in%20the%20list.).
 
-Like npm for node.js, Perl has a vibrant development community in CPAN,
-with a vast archive of Perl modules. You can find a module to do
-anything you want. Most modules are written in pure Perl without
-resorting to C, though some performance intensive modules have an XS
-component that uses C for performance.
+Like [npm](https://www.npmjs.com/) for node.js, Perl has a vibrant 
+development community in [CPAN](https://metacpan.org/), with a vast 
+archive of Perl modules. You can find a module to do anything you want. 
+Most modules are written in pure Perl without resorting to C, though 
+some performance intensive modules have an XS component that uses C 
+for performance.
 
 Through CPAN, you can wrap many databases—SQLite, MySQL, Postgres, and
 more—in Perl code using database driver (DBD) modules. These export the
@@ -48,7 +53,8 @@ algorithms. Most CPAN modules give you both a functional style as well
 as the object oriented one. By giving you that choice, you can pretty
 much do your task your own way.
 
-What sort of problems make Perl a natural?
+## What sort of problems make Perl a natural?
+
 As stated above, Perl does very well with text processing. It can scour
 CSV files for data fields based on complex regex statements. It can
 quickly parse logfiles. It can quickly edit settings files. Perl is also
@@ -63,9 +69,10 @@ server application.
 For power UNIX users, Perl lets you automate nearly any action that you
 like. You can create daemons—small, constantly running programs—that
 will automatically take actions when their conditions are met. You can
-even create build pipelines and automate unit tests. 
+even [create build pipelines and automate unit tests](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example). 
 
-A simpler way to code
+## A simpler way to code
+
 In today’s event-loop-centric asynchronous world of JavaScript, node.js,
 and TypeScript, Perl offers a very straight-forward code flow, and Perl
 code offers simplicity and control.
@@ -79,10 +86,10 @@ great performance. If you wanted performance today, you have JavaScript
 and C, except with added complexity and debugging nightmares.
 
 Perl includes a number of specialized operators that process data in
-unique ways. You can use the diamond <> operator to eat up any stream,
+unique ways. You can use the diamond `<>` operator to eat up any stream,
 file, socket, pipe, named pipe, whatever.
 
-The regex operator =~ means regular expressions can be included in
+The regex operator `=~` means regular expressions can be included in
 functions very easily. 
 
 Perl emphasizes the get what you want the way you want philosophy.
@@ -93,7 +100,7 @@ Let us say we have to create a sha256 digest of a string.
 
 This is how you do in node.js:
 
-This is how you do in node.js.
+```
 const {
   createHash
 } = require('node:crypto');
@@ -102,54 +109,66 @@ const hash = createHash('sha256');
 data = 'Stack Overflow is cool';
 hash.update(data);
 console.log(hash.copy().digest('hex'));
+```
+
 In Perl there are two ways. One is the functional approach:
 
-
+```
 use Digest::SHA qw(sha256_hex);
 
 $data = 'Stack Overflow is cool';
 $hexdigest = sha256_hex($data);
 print("Functional interface :: " . $hexdigest . "\n");
+```
+
 Another is the object-oriented approach:
 
+```
 $sha = Digest::SHA->new('sha256');
 $sha->add($data);               # feed data into stream
 $hexdigest = $sha->hexdigest;
 print("OO interface ::" . $hexdigest);
+```
+
 Here’s how you do it in Python:
 
+```
 import hashlib
 m = hashlib.sha256()
 m.update(b"Stack Overflow is cool")
 print(m.hexdigest())
-Garbage collection
+```
+
+## Garbage collection
+
 For a language mostly considered only good for scripting, it has garbage
 collection. It’s a simple form called reference counting, where Perl
 counts the number of references to a variable and reclaims those
 variables if there are no more references (or if a program leaves the
 scope that a variable was created in). There is no C monstrosity of
-having to free() and mind all your malloc() calls.
+having to `free()` and mind all your `malloc()` calls.
 
 There is also no stack overflow hell as with node.js, in which an
 unintended closure results in recursion and crash.
 
-You can always use the die() diagnostic tool or the Data::Dumper to
+You can always use the `die()` diagnostic tool or the `Data::Dumper` to
 figure out causes in case something does not go as planned. Perl can be
-run in debug mode with the -d switch, but I have hardly used it.
+run in debug mode with the `-d` switch, but I have hardly used it.
 
 Now let us contrast Perl with some other popular languages to get a
 context.
 
-Comparing Perl to other languages
+## Comparing Perl to other languages
+
 Now let us compare Perl to other languages once again. What about non
 blocking socket I/O or file read? What about dealing with big data? What
 about binary data?
 
 In all these departments Perl has its muscles to flex. For binary data
 however, you are much better off with C or something. Perl does have
-ord, pack, and friends. But for text based protocols like SMTP, HTTP,
+`ord`, `pack`, and friends. But for text based protocols like SMTP, HTTP,
 and the like, Perl socket I/O is quite nice. Particularly using the
-diamond operator, <>, for consuming data from any file descriptor.
+diamond operator, `<>`, for consuming data from any file descriptor.
 
 What do these things remind you of…that’s right, UNIX. Perl is living
 example of how going all the way with UNIX philosophy gets things done.
@@ -162,21 +181,22 @@ the world does not want to give up on PHP. Perl requires more knowledge
 and has a steep learning curve compared to PHP, but Perl is Perl. You
 use it anywhere you want and get things done.
 
-Perl vs Python
+### Perl vs Python
+
 Python has an interactive shell where you can easily develop code and
 learn. It is amazing and really helps language learners. Python serves
 as an excellent learner’s programming language.
 
-Perl however has a -c switch to just compile the code to check for basic
+Perl however has a `-c` switch to just compile the code to check for basic
 syntax errors.
 
-Perl has use strict and -w flags which make it more resistant to
+Perl has use strict and `-w` flags which make it more resistant to
 unintended variable spelling errors and scoping problems. Python does
 not offer that.
 
 Python is an out and out object-oriented paradigm. Perl is a mix. Python
 offers several functional programming concepts like lambda, map, and
-friends, but it remains rooted in OOP.
+friends, but it remains rooted in [OOP](https://stackoverflow.blog/2020/09/02/if-everyone-hates-it-why-is-oop-still-so-widely-spread/).
 
 Perl is more invested in using traditional references and hash semantics
 for subroutines and other advanced usage. Python tries to do it using
@@ -190,7 +210,8 @@ objects, but Perl shines in other areas.
 Sometimes it is not an apples to apples comparison as each programming
 language has its own benefits and specific uses.
 
-Perl vs node.js
+### Perl vs node.js
+
 Node.js is fully object-oriented, but functions are first class
 variables, which means you can use a function name any which way you
 want and invoke it in creative ways, but this risks confusing beginners.
@@ -211,7 +232,8 @@ Most of the time, node.js relies on package.json and local
 installations. Perl depends on system-wide installations of dependencies
 or libraries/modules.
 
-Perl vs ksh/bash
+### Perl vs ksh/bash
+
 Well, this is a funny thing to write. Perl could be a contender for
 shell-scripting jobs as it is a scripting language, correct? But Perl
 installation is a factor to consider whether to use it or some shell in
@@ -223,7 +245,8 @@ comparison. For instance, we don’t compare ksh and Python but tend to
 talk about Perl in same context. This is due to its roots. Otherwise,
 there is no meaning in this.
 
-Some drawbacks of Perl
+## Some drawbacks of Perl
+
 While I am a strong supporter of Perl, let us be balanced and examine
 why it is not making inroads in certain areas like AI. In today’s AI and
 ML centric world, Python seems to have made a very strong footprint.
@@ -234,14 +257,16 @@ single-threaded performance, Perl is not a contender.
 In the race for performance and modern trends, Perl definitely appears a
 bit dated. But it does have a place as we have seen above.
 
-Why it is still relevant in 2022
+## Why it is still relevant in 2022
+
 Perl is not going away. That ain’t gonna happen.
 
 It is still being used in CGI scripts. It is used in several sys admin
 tasks. Perl is still alive and kicking.
 
 In terms of bindings to other libraries and utilities, Perl is as good
-as other choices. For instance, if you wish to talk to libcurl or libtls
+as other choices. For instance, if you wish to talk to 
+[libcurl](https://metacpan.org/pod/WWW::Curl) or [libtls](https://github.com/rsimoes/Net-GnuTLS)
 or some third-party open-source library, then we can often choose the
 language we like. Here, Perl is supported out of the box and you can
 easily get your job done.
@@ -250,7 +275,8 @@ Perl shines in what it is good at. And as long as the problems it solves
 well are not solved by other tools, Perl will continue to exist and
 grow.
 
-Conclusion
+## Conclusion
+
 Perl has always been very remarkable about its documentation and
 tutorials—perhaps being too wordy at times—but clearly they are
 developer-friendly.
