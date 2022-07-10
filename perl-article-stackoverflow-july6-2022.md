@@ -92,14 +92,15 @@ file, socket, pipe, named pipe, whatever.
 The regex operator `=~` means regular expressions can be included in
 functions very easily. 
 
-Perl emphasizes the *get what you want the way you want* philosophy, 
-also known as [TMTOWTDI](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it).
+Perl emphasizes the get what you want the way you want philosophy.
 
-Let us examine some code samples to get some perspective by creating a sha256 digest of a string.
+Let us examine some code samples to get some perspective.
+
+Let us say we have to create a sha256 digest of a string.
 
 This is how you do in node.js:
 
-```javascript
+```
 const {
   createHash
 } = require('node:crypto');
@@ -112,28 +113,26 @@ console.log(hash.copy().digest('hex'));
 
 In Perl there are two ways. One is the functional approach:
 
-```perl
+```
 use Digest::SHA qw(sha256_hex);
 
-my $data = 'Stack Overflow is cool';
-my $hexdigest = sha256_hex($data);
+$data = 'Stack Overflow is cool';
+$hexdigest = sha256_hex($data);
 print("Functional interface :: " . $hexdigest . "\n");
 ```
 
 Another is the object-oriented approach:
 
-```perl
-use Digest::SHA
-
-my $sha = Digest::SHA->new('sha256');
+```
+$sha = Digest::SHA->new('sha256');
 $sha->add($data);               # feed data into stream
-my $hexdigest = $sha->hexdigest;
+$hexdigest = $sha->hexdigest;
 print("OO interface ::" . $hexdigest);
 ```
 
 Here’s how you do it in Python:
 
-```python
+```
 import hashlib
 m = hashlib.sha256()
 m.update(b"Stack Overflow is cool")
