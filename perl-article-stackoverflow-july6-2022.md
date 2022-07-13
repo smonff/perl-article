@@ -1,4 +1,7 @@
-# Why perl is still hugely relevant for solving world’s computing problems
+# Why Perl is still relevant in 2022
+
+While Perl might seem like an outdated scripting language, it still has plenty
+of relevant uses today.
 
 If you love UNIX/Linux/BSD like me, then you have definitely learnt Perl
 and programmed in it. I am pretty certain you have also used Perl more
@@ -27,13 +30,13 @@ approach or otherwise, Perl is excellent for logfile analysis, text
 manipulation, in-place editing of files, and scouring structured text
 files for specific field values.
 
-Perl is very UNIX-friendly. Perl serves as a wrapper around UNIX tools
-and is fully integrated into OS semantics. Other languages don’t attempt
-this. As a result, it excels at pipes, file slurping, inter-process
-communication and other geeky tasks. Like C, it can create UNIX daemons
-or server processes that run in the background. We can easily invoke a
-Perl daemon to avoid spending hours working on C and avoid several
-[security flaws](https://portswigger.net/daily-swig/c-is-least-secure-programming-language-study-claims#:~:text=The%20top%20vulnerabilities%20found%20in,programming%20language%20in%20the%20list.).
+Perl is very UNIX-friendly. Perl serves as a wrapper around UNIX tools and is
+fully integrated into OS semantics. Other languages don’t attempt this. As a
+result, it excels at pipes, file slurping, inter-process communication and other
+geeky tasks. Like C, it can create UNIX daemons or server processes that run in
+the background. We can easily invoke a Perl daemon to avoid spending hours
+working on C and avoid several [security
+flaws](https://portswigger.net/daily-swig/c-is-least-secure-programming-language-study-claims#:~:text=The%20top%20vulnerabilities%20found%20in,programming%20language%20in%20the%20list.).
 
 Like [npm](https://www.npmjs.com/) for node.js, Perl has a vibrant 
 development community in [CPAN](https://metacpan.org/), with a vast 
@@ -89,10 +92,6 @@ and `await keywords`. An alternative can be
 [`Mojo::Promise`](https://metacpan.org/pod/Mojo::Promise), a _Perl-ish 
 implementation of [Promises/A+](https://promisesaplus.com/) and a superset 
 of [ES6 Promises](https://duckduckgo.com/?q=\mdn%20Promise)_.  
-
-Perl is best run in single tasks—on its own, it is not a language with
-great performance. If you wanted performance today, you have JavaScript
-and C, except with added complexity and debugging nightmares.
 
 Perl includes a number of specialized operators that process data in
 unique ways. You can use the diamond `<>` operator to eat up any stream,
@@ -152,22 +151,22 @@ print(m.hexdigest())
 
 ## Garbage collection
 
-For a language mostly considered only good for scripting, it has garbage
-collection. It’s a simple form called reference counting, where Perl
-counts the number of references to a variable and reclaims those
+For a language *sometimes* considered only good for scripting, it has garbage
+collection. It’s a simple form called 
+[reference counting](https://perldotcom.perl.org/article/the-trouble-with-reference-counting/), 
+where Perl counts the number of references to a variable and reclaims those
 variables if there are no more references (or if a program leaves the
 scope that a variable was created in). There is no C monstrosity of
 having to `free()` and mind all your `malloc()` calls.
 
-There is also no stack overflow hell as with node.js, in which an
-unintended closure results in recursion and crash.
+## Debugging
 
-You can always use the `die()` diagnostic tool or the `Data::Dumper` to
-figure out causes in case something does not go as planned. Perl can be
-run in debug mode with the `-d` switch, but I have hardly used it.
+You can always use the `die()` diagnostic tool, the core `Data::Dumper` to 
+dump your data structures, or [`Data::Printer`](https://metacpan.org/pod/Data::Printer)
+to inspect complex objects.
 
-Now let us contrast Perl with some other popular languages to get a
-context.
+All those allow to figure out causes in case something does not go as 
+planned. Perl can also be run in debug mode with the `-d` switch.
 
 ## Comparing Perl to other languages
 
@@ -256,24 +255,36 @@ comparison. For instance, we don’t compare ksh and Python but tend to
 talk about Perl in same context. This is due to its roots. Otherwise,
 there is no meaning in this.
 
-## Some drawbacks of Perl
+## Beyond the drawbacks of Perl
 
 While I am a strong supporter of Perl, let us be balanced and examine
 why it is not making inroads in certain areas like AI. In today’s AI and
 ML centric world, Python seems to have made a very strong footprint.
 
-When it comes to the performance of node.js and its event loop
-single-threaded performance, Perl is not a contender.
+When it comes to the performance of node.js and its event loop single-threaded
+performance, Perl could seem to not be a contender, but modules allow to
+extend it's possiblitities.
 
-In the race for performance and modern trends, Perl definitely appears a
-bit dated. But it does have a place as we have seen above.
+Because it continued to evolve by taking it's inspiration from other languages,
+it can provide production ready implementations for event loops, promises,
+object oriented programming. It is continously improved by a large community and
+each release provide new features that takes it to the next step. Notable
+examples being:
+
+- v5.34 provides an experimental [`try / catch`
+  syntax](https://perldoc.perl.org/5.34.0/perlsyn#Try-Catch-Exception-Handling)
+  and the [`perlgov` documentation](https://perldoc.perl.org/5.34.0/perlgov),
+  exposing goals, scope, system, and rules for Perl's new governance model,
+- v5.36 provide non-experimental [subroutines
+  signatures](https://perldoc.perl.org/5.36.0/perldelta#Core-Enhancements)
 
 ## Why it is still relevant in 2022
 
 Perl is not going away. That ain’t gonna happen.
 
-It is still being used in CGI scripts. It is used in several sys admin
-tasks. Perl is still alive and kicking.
+It is used in production codebases of many companies, for tasks as diverse as
+web development, databases access, log analysis or web crawling. It is a core
+component of most Unix like systems.
 
 In terms of bindings to other libraries and utilities, Perl is as good
 as other choices. For instance, if you wish to talk to 
@@ -289,7 +300,7 @@ grow.
 ## Conclusion
 
 Perl has always been very remarkable about its documentation and
-tutorials—perhaps being too wordy at times—but clearly they are
+tutorials — perhaps being too wordy at times — but clearly they are
 developer-friendly.
 
 Hopefully this article makes a case for Perl that is convincing and
