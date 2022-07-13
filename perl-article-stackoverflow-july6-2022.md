@@ -267,9 +267,13 @@ extend it's possiblitities.
 
 Because it continued to evolve by taking it's inspiration from other languages,
 it can provide production ready implementations for event loops, promises,
-object oriented programming. It is continously improved by a large community and
-each release provide new features that takes it to the next step. Notable
-examples being:
+object oriented programming. In the last few years, the
+[Corinna](https://github.com/Ovid/Cor) specifications and
+[Object::Pad](https://metacpan.org/pod/Object::Pad) implementation are preparing
+the introduction of modern OOP in the Perl core.
+
+It is continously improved by a large community and each release provide new
+features that takes it to the next step. Notable examples being:
 
 - v5.34 provides an experimental [`try / catch`
   syntax](https://perldoc.perl.org/5.34.0/perlsyn#Try-Catch-Exception-Handling)
@@ -277,6 +281,11 @@ examples being:
   exposing goals, scope, system, and rules for Perl's new governance model,
 - v5.36 provide non-experimental [subroutines
   signatures](https://perldoc.perl.org/5.36.0/perldelta#Core-Enhancements)
+
+A couple of years ago, [Perl 7 was
+announced](https://www.perl.com/article/announcing-perl-7/), what brings an end
+to the Raku / Perl confusion and propose to bring the best of Modern Perl
+practices on the front..
 
 ## Why it is still relevant in 2022
 
