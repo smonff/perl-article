@@ -170,6 +170,9 @@ programmer don't need to take care of it as with the C language `free()` and
 
 ## Debugging
 
+Perl has a `-c` switch to just compile the code to check for basic
+syntax errors.
+
 You can always use the `die()` diagnostic tool, the core `Data::Dumper` to 
 dump your data structures, or [`Data::Printer`](https://metacpan.org/pod/Data::Printer)
 to inspect complex objects.
