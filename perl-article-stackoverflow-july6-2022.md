@@ -152,12 +152,13 @@ print(m.hexdigest())
 ## Garbage collection
 
 For a language *sometimes* considered only good for scripting, it has garbage
-collection. It’s a simple form called 
-[reference counting](https://perldotcom.perl.org/article/the-trouble-with-reference-counting/), 
+collection. It’s a simple form called [reference
+counting](https://perldotcom.perl.org/article/the-trouble-with-reference-counting/),
 where Perl counts the number of references to a variable and reclaims those
-variables if there are no more references (or if a program leaves the
-scope that a variable was created in). There is no C monstrosity of
-having to `free()` and mind all your `malloc()` calls.
+variables if there are no more references (or if a program leaves the scope that
+a variable was created in). The language itself manage the memory: the
+programmer don't need to take care of it as with the C language `free()` and
+`malloc()` functions.
 
 ## Debugging
 
