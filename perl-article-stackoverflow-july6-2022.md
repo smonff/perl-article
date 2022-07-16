@@ -283,25 +283,31 @@ features that takes it to the next step. Notable examples being:
 - v5.36 provide non-experimental [subroutines
   signatures](https://perldoc.perl.org/5.36.0/perldelta#Core-Enhancements)
 
-A couple of years ago, [Perl 7 was
-announced](https://www.perl.com/article/announcing-perl-7/), what brings an end
-to the Raku / Perl confusion and propose to bring the best of Modern Perl
-practices on the front..
-
 ## Why it is still relevant in 2022
 
 Perl is not going away. That ain’t gonna happen.
 
-It is used in production codebases of many companies, for tasks as diverse as
-web development, databases access, log analysis or web crawling. It is a core
-component of most Unix like systems.
+It is used in production codebases of many
+companies, for tasks as diverse as web development, databases access, log
+analysis or web crawling. It is a core component of most unix-like systems.
 
-In terms of bindings to other libraries and utilities, Perl is as good
-as other choices. For instance, if you wish to talk to 
-[libcurl](https://metacpan.org/pod/WWW::Curl) or [libtls](https://github.com/rsimoes/Net-GnuTLS)
-or some third-party open-source library, then we can often choose the
-language we like. Here, Perl is supported out of the box and you can
-easily get your job done.
+Many legacy production systems rely on Perl and new Perl applications are
+flourishing using the modern Perl toolkits available through CPAN. 
+
+If CGI was an important historic part of the Perl culture until the mid 2000, it
+was [removed from Perl core with 5.22 in
+2014](http://www.modernperlbooks.com/mt/2013/05/ejecting-cgipm-from-the-perl-core.html).
+Since a long time, CGI is not the recommended way to handle web development [in
+favor of the alternatives](https://metacpan.org/pod/CGI::Alternatives) provided
+by he community. Two notables web frameworks being [Dancer](https://dancer.pm)
+and [Mojolicious](https://mojolicious.org).
+
+In terms of bindings to other libraries and utilities, Perl is as good as other
+choices. For instance, if you wish to talk to
+[libcurl](https://metacpan.org/pod/WWW::Curl) or
+[libtls](https://github.com/rsimoes/Net-GnuTLS) or some third-party open-source
+library or database, then we can often choose the language we like. Here, Perl
+is supported out of the box and you can easily get your job done.
 
 Perl shines in what it is good at. And as long as the problems it solves
 well are not solved by other tools, Perl will continue to exist and
