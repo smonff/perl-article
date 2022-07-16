@@ -192,16 +192,8 @@ however, you are much better off with C or something. Perl does have
 and the like, Perl socket I/O is quite nice. Particularly using the
 diamond operator, `<>`, for consuming data from any file descriptor.
 
-What do these things remind you of…that’s right, UNIX. Perl is living
-example of how going all the way with UNIX philosophy gets things done.
-
-People talk of node.js streams and so on, but to me it looks like a joke
-compared to the UNIX and Perl world.
-
-Perl is however an easy alternative to insecure PHP. But for some reason
-the world does not want to give up on PHP. Perl requires more knowledge
-and has a steep learning curve compared to PHP, but Perl is Perl. You
-use it anywhere you want and get things done.
+What do these things remind you of…that’s right, Unix. Perl is living
+example of how going all the way with Unix philosophy gets things done.
 
 ### Perl vs Python
 
