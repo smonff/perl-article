@@ -283,11 +283,6 @@ features that takes it to the next step. Notable examples being:
 - v5.36 provide non-experimental [subroutines
   signatures](https://perldoc.perl.org/5.36.0/perldelta#Core-Enhancements)
 
-A couple of years ago, [Perl 7 was
-announced](https://www.perl.com/article/announcing-perl-7/), what brings an end
-to the Raku / Perl confusion and propose to bring the best of Modern Perl
-practices on the front..
-
 ## Why it is still relevant in 2022
 
 Perl is not going away. That ain’t gonna happen.
