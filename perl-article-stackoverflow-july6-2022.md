@@ -3,10 +3,10 @@
 While Perl might seem like an outdated scripting language, it still has plenty
 of relevant uses today.
 
-If you love UNIX/Linux/BSD like me, then you have definitely learnt Perl
+If you love Unix/Linux/BSD like me, then you have definitely learnt Perl
 and programmed in it. I am pretty certain you have also used Perl more
 than once, perhaps several times. The language was created in 1987 as a
-general purpose UNIX scripting language, but has undergone many changes
+general purpose Unix scripting language, but has undergone many changes
 since then (even spawning another programming language, 
 [Raku](https://raku.org)). 
 
@@ -30,15 +30,15 @@ approach or otherwise, Perl is excellent for logfile analysis, text
 manipulation, in-place editing of files, and scouring structured text
 files for specific field values.
 
-Perl is very UNIX-friendly. Perl serves as a wrapper around UNIX tools and is
+Perl is very Unix-friendly. Perl serves as a wrapper around Unix tools and is
 fully integrated into OS semantics. Other languages don’t attempt this. As a
 result, it excels at pipes, file slurping, inter-process communication and other
-geeky tasks. Like C, it can create UNIX daemons or server processes that run in
+geeky tasks. Like C, it can create Unix daemons or server processes that run in
 the background. We can easily invoke a Perl daemon to avoid spending hours
 working on C and avoid several [security
 flaws](https://portswigger.net/daily-swig/c-is-least-secure-programming-language-study-claims#:~:text=The%20top%20vulnerabilities%20found%20in,programming%20language%20in%20the%20list.).
 
-Like [npm](https://www.npmjs.com/) for node.js, Perl has a vibrant 
+Like [npm](https://www.npmjs.com/) for Node.js, Perl has a vibrant 
 development community in [CPAN](https://metacpan.org/), with a vast 
 archive of Perl modules. You can find a module to do anything you want. 
 Most modules are written in pure Perl without resorting to C, though 
@@ -58,25 +58,33 @@ much do your task your own way.
 
 ## What sort of problems make Perl a natural?
 
-As stated above, Perl does very well with text processing. It can scour
-CSV files for data fields based on complex regex statements. It can
-quickly parse logfiles. It can quickly edit settings files. Perl is also
-a natural for various format conversions, generating PDFs, HTML, or XML.
+As stated above, Perl does very well with text processing. It can scour CSV
+files for data fields based on complex regex statements. It is a tool of choice
+for parsing log files. It can quickly edit settings files. Perl is also a natural
+for various format conversions, generating PDFs, HTML, or XML.
 
 In early days of the internet, Perl served as the foundation of a lot of
 basic networking tasks: common gateway interface (CGI), MIME decoding in
 emails, even opening websockets between a client and server. It still
 excels here, and can handle networking tasks without running a whole
-server application. 
+server application.
 
-For power UNIX users, Perl lets you automate nearly any action that you
+For power Unix users, Perl lets you automate nearly any action that you
 like. You can create daemons—small, constantly running programs—that
-will automatically take actions when their conditions are met. You can
-even [create build pipelines and automate unit tests](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example). 
+will automatically take actions when their conditions are met. 
+
+Testing is at the core of Perl culture, that provide excellent [test toolkits
+and
+infrastructures](http://www.modernperlbooks.com/mt/2009/04/a-test-infected-culture.html).
+Any module uploaded to the CPAN will pass automatically through the *[CPAN
+Testers Reports](http://www.cpantesters.org/page/about.html), a multi-platorm
+testing ground that operate since 1998. Standard Perl tests can also be run in [
+build
+pipelines](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example).
 
 ## A simpler way to code, with flexibility when needed
 
-In today’s event-loop-centric asynchronous world of JavaScript, node.js,
+In today’s event-loop-centric asynchronous world of JavaScript, Node.js,
 and TypeScript, Perl offers a very straight-forward code flow, simplicity 
 and control.
 
@@ -105,7 +113,7 @@ also known as [TMTOWTDI](https://en.wikipedia.org/wiki/There%27s_more_than_one_w
 
 Let us examine some code samples to get some perspective by creating a sha256 digest of a string.
 
-This is how you do in node.js:
+This is how you do in Node.js:
 
 ```javascript
 const {
@@ -162,6 +170,9 @@ programmer don't need to take care of it as with the C language `free()` and
 
 ## Debugging
 
+Perl has a `-c` switch to just compile the code to check for basic
+syntax errors.
+
 You can always use the `die()` diagnostic tool, the core `Data::Dumper` to 
 dump your data structures, or [`Data::Printer`](https://metacpan.org/pod/Data::Printer)
 to inspect complex objects.
@@ -181,29 +192,32 @@ however, you are much better off with C or something. Perl does have
 and the like, Perl socket I/O is quite nice. Particularly using the
 diamond operator, `<>`, for consuming data from any file descriptor.
 
-What do these things remind you of…that’s right, UNIX. Perl is living
-example of how going all the way with UNIX philosophy gets things done.
-
-People talk of node.js streams and so on, but to me it looks like a joke
-compared to the UNIX and Perl world.
-
-Perl is however an easy alternative to insecure PHP. But for some reason
-the world does not want to give up on PHP. Perl requires more knowledge
-and has a steep learning curve compared to PHP, but Perl is Perl. You
-use it anywhere you want and get things done.
+What do these things remind you of…that’s right, Unix. Perl is living
+example of how going all the way with Unix philosophy gets things done.
 
 ### Perl vs Python
 
-Python has an interactive shell where you can easily develop code and
-learn. It is amazing and really helps language learners. Python serves
-as an excellent learner’s programming language.
+Python has a built-in interactive shell where you can easily develop code and
+learn. It is amazing and can helps new comers to got to the point directly
+without having to configure the environment. It can also help to evaluate quick
+statements in everyday's life.
 
-Perl however has a `-c` switch to just compile the code to check for basic
-syntax errors.
+In Perl world, interactive shells exists from CPAN. Such examples are
+[Reply](https://metacpan.org/release/Reply) or
+[Devel::REPL](https://metacpan.org/pod/Devel::REPL) an effort to build a modern
+repl.
 
-Perl has use strict and `-w` flags which make it more resistant to
-unintended variable spelling errors and scoping problems. Python does
-not offer that.
+A similar thing to mention from Perl world that can be similar to REPL
+environments, and a part of it's *folklore* is the [Perl one
+liners](https://catonmat.net/ftp/perl1line.txt), very short programs that
+operate on lists, on whole file lines, can generate, replace or encode at the
+price of a very little effort.
+
+A good reason why Python serves as an excellent learner’s programming language
+for that is Python isn't a TIMTOWTDI language at it's core. The fact that it
+doesn't allow a wide variety of ways to implement something can make it more
+straighforward and make it easier, for example, to apply code rules when joining
+a team.
 
 Python is an out and out object-oriented paradigm. Perl is a mix. Python
 offers several functional programming concepts like lambda, map, and
@@ -211,7 +225,7 @@ friends, but it remains rooted in [OOP](https://stackoverflow.blog/2020/09/02/if
 
 Perl is more invested in using traditional references and hash semantics
 for subroutines and other advanced usage. Python tries to do it using
-objects a little like how node.js does it.
+objects a little like how Node.js does it.
 
 Python has Jupyter notebook that takes the power of Python to the
 browser. Python scripts tend to be shorter than Perl in general. Python
@@ -221,27 +235,33 @@ objects, but Perl shines in other areas.
 Sometimes it is not an apples to apples comparison as each programming
 language has its own benefits and specific uses.
 
-### Perl vs node.js
+### Perl vs Node.js
 
 Node.js is fully object-oriented, but functions are first class
 variables, which means you can use a function name any which way you
 want and invoke it in creative ways, but this risks confusing beginners.
 It is fully asynchronous.
 
-The node.js program flow can be scary for beginners. Even experienced
+The Node.js program flow can be scary for beginners. Even experienced
 programmers struggle with code flow and figuring out when a function
 returns. It can lead to callback hell, though promises and async/await
 make things better—if they are used. But the event loop and single
-threaded node.js flow makes it harder to use for one off tasks.
+threaded Node.js flow makes it harder to use for one off tasks.
 
 Perl is pleasant and more straight-forward. Typically, if you wish to
 use a third-party library to solve a particular problem, you can either
-do it using node.js or Perl. The open source modules for plugging into
+do it using Node.js or Perl. The open source modules for plugging into
 most third-party libraries exist for both languages.
 
-Most of the time, node.js relies on package.json and local
-installations. Perl depends on system-wide installations of dependencies
-or libraries/modules.
+Most of the time, Node.js relies on package.json and local installations of
+modules and Node.js. Despite Perl wide availability on most systems, this is
+something that Perl community tends to encourage with tools like
+[`perlbrew`](https://perlbrew.pl/), that allows the admin-free installation of
+Perl and separation of the system `perl` (allowing to have many versions
+installed). `perlbrew` is very similar to nvm (the Node Version Manager).
+Another interesting tool is Carton, a modules dependency manager, inspired by
+Ruby's [Bundler](https://bundler.io/) and similar to Node.js `npm`, allowing to
+track, install, deploy or bundle your applications dependencies.
 
 ### Perl vs ksh/bash
 
@@ -262,7 +282,7 @@ While I am a strong supporter of Perl, let us be balanced and examine
 why it is not making inroads in certain areas like AI. In today’s AI and
 ML centric world, Python seems to have made a very strong footprint.
 
-When it comes to the performance of node.js and its event loop single-threaded
+When it comes to the performance of Node.js and its event loop single-threaded
 performance, Perl could seem to not be a contender, but modules allow to
 extend it's possiblitities.
 
@@ -282,6 +302,11 @@ features that takes it to the next step. Notable examples being:
   exposing goals, scope, system, and rules for Perl's new governance model,
 - v5.36 provide non-experimental [subroutines
   signatures](https://perldoc.perl.org/5.36.0/perldelta#Core-Enhancements)
+
+A couple of years ago, [Perl 7 was
+announced](https://www.perl.com/article/announcing-perl-7/), what brings an end
+to the Raku / Perl confusion and propose to bring the best of Modern Perl
+practices to the front.
 
 ## Why it is still relevant in 2022
 
