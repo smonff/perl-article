@@ -253,9 +253,15 @@ use a third-party library to solve a particular problem, you can either
 do it using Node.js or Perl. The open source modules for plugging into
 most third-party libraries exist for both languages.
 
-Most of the time, node.js relies on package.json and local
-installations. Perl depends on system-wide installations of dependencies
-or libraries/modules.
+Most of the time, Node.js relies on package.json and local installations of
+modules and Node.js. Despite Perl wide availability on most systems, this is
+something that Perl community tends to encourage with tools like
+[`perlbrew`](https://perlbrew.pl/), that allows the admin-free installation of
+Perl and separation of the system `perl` (allowing to have many versions
+installed). `perlbrew` is very similar to nvm (the Node Version Manager).
+Another interesting tool is Carton, a modules dependency manager, inspired by
+Ruby's [Bundler](https://bundler.io/) and similar to Node.js `npm`, allowing to
+track, install, deploy or bundle your applications dependencies.
 
 ### Perl vs ksh/bash
 
