@@ -58,21 +58,29 @@ much do your task your own way.
 
 ## What sort of problems make Perl a natural?
 
-As stated above, Perl does very well with text processing. It can scour
-CSV files for data fields based on complex regex statements. It can
-quickly parse logfiles. It can quickly edit settings files. Perl is also
-a natural for various format conversions, generating PDFs, HTML, or XML.
+As stated above, Perl does very well with text processing. It can scour CSV
+files for data fields based on complex regex statements. It is a tool of choice
+for parsing log files. It can quickly edit settings files. Perl is also a natural
+for various format conversions, generating PDFs, HTML, or XML.
 
 In early days of the internet, Perl served as the foundation of a lot of
 basic networking tasks: common gateway interface (CGI), MIME decoding in
 emails, even opening websockets between a client and server. It still
 excels here, and can handle networking tasks without running a whole
-server application. 
+server application.
 
 For power UNIX users, Perl lets you automate nearly any action that you
 like. You can create daemons—small, constantly running programs—that
-will automatically take actions when their conditions are met. You can
-even [create build pipelines and automate unit tests](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example). 
+will automatically take actions when their conditions are met. 
+
+Testing is at the core of Perl culture, that provide excellent [test toolkits
+and
+infrastructures](http://www.modernperlbooks.com/mt/2009/04/a-test-infected-culture.html).
+Any module uploaded to the CPAN will pass automatically through the *[CPAN
+Testers Reports](http://www.cpantesters.org/page/about.html), a multi-platorm
+testing ground that operate since 1998. Standard Perl tests can also be run in [
+build
+pipelines](https://stackoverflow.com/questions/533553/perl-build-unit-testing-code-coverage-a-complete-working-example).
 
 ## A simpler way to code, with flexibility when needed
 
