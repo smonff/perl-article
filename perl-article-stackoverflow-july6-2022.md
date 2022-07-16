@@ -3,10 +3,10 @@
 While Perl might seem like an outdated scripting language, it still has plenty
 of relevant uses today.
 
-If you love UNIX/Linux/BSD like me, then you have definitely learnt Perl
+If you love Unix/Linux/BSD like me, then you have definitely learnt Perl
 and programmed in it. I am pretty certain you have also used Perl more
 than once, perhaps several times. The language was created in 1987 as a
-general purpose UNIX scripting language, but has undergone many changes
+general purpose Unix scripting language, but has undergone many changes
 since then (even spawning another programming language, 
 [Raku](https://raku.org)). 
 
@@ -30,15 +30,15 @@ approach or otherwise, Perl is excellent for logfile analysis, text
 manipulation, in-place editing of files, and scouring structured text
 files for specific field values.
 
-Perl is very UNIX-friendly. Perl serves as a wrapper around UNIX tools and is
+Perl is very Unix-friendly. Perl serves as a wrapper around Unix tools and is
 fully integrated into OS semantics. Other languages don’t attempt this. As a
 result, it excels at pipes, file slurping, inter-process communication and other
-geeky tasks. Like C, it can create UNIX daemons or server processes that run in
+geeky tasks. Like C, it can create Unix daemons or server processes that run in
 the background. We can easily invoke a Perl daemon to avoid spending hours
 working on C and avoid several [security
 flaws](https://portswigger.net/daily-swig/c-is-least-secure-programming-language-study-claims#:~:text=The%20top%20vulnerabilities%20found%20in,programming%20language%20in%20the%20list.).
 
-Like [npm](https://www.npmjs.com/) for node.js, Perl has a vibrant 
+Like [npm](https://www.npmjs.com/) for Node.js, Perl has a vibrant 
 development community in [CPAN](https://metacpan.org/), with a vast 
 archive of Perl modules. You can find a module to do anything you want. 
 Most modules are written in pure Perl without resorting to C, though 
@@ -69,7 +69,7 @@ emails, even opening websockets between a client and server. It still
 excels here, and can handle networking tasks without running a whole
 server application.
 
-For power UNIX users, Perl lets you automate nearly any action that you
+For power Unix users, Perl lets you automate nearly any action that you
 like. You can create daemons—small, constantly running programs—that
 will automatically take actions when their conditions are met. 
 
@@ -84,7 +84,7 @@ pipelines](https://stackoverflow.com/questions/533553/perl-build-unit-testing-co
 
 ## A simpler way to code, with flexibility when needed
 
-In today’s event-loop-centric asynchronous world of JavaScript, node.js,
+In today’s event-loop-centric asynchronous world of JavaScript, Node.js,
 and TypeScript, Perl offers a very straight-forward code flow, simplicity 
 and control.
 
@@ -113,7 +113,7 @@ also known as [TMTOWTDI](https://en.wikipedia.org/wiki/There%27s_more_than_one_w
 
 Let us examine some code samples to get some perspective by creating a sha256 digest of a string.
 
-This is how you do in node.js:
+This is how you do in Node.js:
 
 ```javascript
 const {
@@ -219,7 +219,7 @@ friends, but it remains rooted in [OOP](https://stackoverflow.blog/2020/09/02/if
 
 Perl is more invested in using traditional references and hash semantics
 for subroutines and other advanced usage. Python tries to do it using
-objects a little like how node.js does it.
+objects a little like how Node.js does it.
 
 Python has Jupyter notebook that takes the power of Python to the
 browser. Python scripts tend to be shorter than Perl in general. Python
@@ -229,22 +229,22 @@ objects, but Perl shines in other areas.
 Sometimes it is not an apples to apples comparison as each programming
 language has its own benefits and specific uses.
 
-### Perl vs node.js
+### Perl vs Node.js
 
 Node.js is fully object-oriented, but functions are first class
 variables, which means you can use a function name any which way you
 want and invoke it in creative ways, but this risks confusing beginners.
 It is fully asynchronous.
 
-The node.js program flow can be scary for beginners. Even experienced
+The Node.js program flow can be scary for beginners. Even experienced
 programmers struggle with code flow and figuring out when a function
 returns. It can lead to callback hell, though promises and async/await
 make things better—if they are used. But the event loop and single
-threaded node.js flow makes it harder to use for one off tasks.
+threaded Node.js flow makes it harder to use for one off tasks.
 
 Perl is pleasant and more straight-forward. Typically, if you wish to
 use a third-party library to solve a particular problem, you can either
-do it using node.js or Perl. The open source modules for plugging into
+do it using Node.js or Perl. The open source modules for plugging into
 most third-party libraries exist for both languages.
 
 Most of the time, node.js relies on package.json and local
@@ -270,7 +270,7 @@ While I am a strong supporter of Perl, let us be balanced and examine
 why it is not making inroads in certain areas like AI. In today’s AI and
 ML centric world, Python seems to have made a very strong footprint.
 
-When it comes to the performance of node.js and its event loop single-threaded
+When it comes to the performance of Node.js and its event loop single-threaded
 performance, Perl could seem to not be a contender, but modules allow to
 extend it's possiblitities.
 
