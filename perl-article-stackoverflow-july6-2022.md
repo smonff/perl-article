@@ -197,16 +197,27 @@ example of how going all the way with Unix philosophy gets things done.
 
 ### Perl vs Python
 
-Python has an interactive shell where you can easily develop code and
-learn. It is amazing and really helps language learners. Python serves
-as an excellent learner’s programming language.
+Python has a built-in interactive shell where you can easily develop code and
+learn. It is amazing and can helps new comers to got to the point directly
+without having to configure the environment. It can also help to evaluate quick
+statements in everyday's life.
 
-Perl however has a `-c` switch to just compile the code to check for basic
-syntax errors.
+In Perl world, interactive shells exists from CPAN. Such examples are
+[Reply](https://metacpan.org/release/Reply) or
+[Devel::REPL](https://metacpan.org/pod/Devel::REPL) an effort to build a modern
+repl.
 
-Perl has use strict and `-w` flags which make it more resistant to
-unintended variable spelling errors and scoping problems. Python does
-not offer that.
+A similar thing to mention from Perl world that can be similar to REPL
+environments, and a part of it's *folklore* is the [Perl one
+liners](https://catonmat.net/ftp/perl1line.txt), very short programs that
+operate on lists, on whole file lines, can generate, replace or encode at the
+price of a very little effort.
+
+A good reason why Python serves as an excellent learner’s programming language
+for that is Python isn't a TIMTOWTDI language at it's core. The fact that it
+doesn't allow a wide variety of ways to implement something can make it more
+straighforward and make it easier, for example, to apply code rules when joining
+a team.
 
 Python is an out and out object-oriented paradigm. Perl is a mix. Python
 offers several functional programming concepts like lambda, map, and
