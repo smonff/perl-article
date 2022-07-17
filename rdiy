@@ -1,0 +1,139 @@
+#!/usr/bin/env perl
+package Article::Example::App::rdiy;
+
+use warnings;
+# Automatically enable 'use strict'
+use 5.20.0;
+use feature qw( signatures );
+no warnings 'experimental::signatures';
+
+use Carp;
+use Getopt::Long qw(GetOptions);
+use Pod::Usage;
+use Time::Piece;
+
+our $VERSION = '0.02';
+
+use constant {
+  LEAP_YEAR_DAYS   => 366,
+  COMMON_YEAR_DAYS => 365,
+};
+
+run();
+
+sub run {
+  my $date = '';
+  my $help = 0;
+  my $man = 0;
+  my $verbose = '';
+  GetOptions (
+    "date:s" => \$date,
+    'help|?' => \$help,
+    'man'     => \$man,
+    "verbose" => \$verbose,
+  );
+
+  pod2usage(1) if $help;
+  pod2usage(-exitval => 0, -verbose => 2) if $man;
+
+  if ($date) {
+    die "Not valid date argument, please use YYYY-mm-dd"
+      unless $date =~ m/^\d{4}-\d{2}-\d{2}$/;
+  }
+
+  my $year_data = calculate_number_of_days_left_for_year($date);
+
+  display_report($year_data, $verbose);
+};
+
+
+sub calculate_number_of_days_left_for_year ($provided_date) {
+
+  my $current_t = localtime;
+  my $current_year = $current_t->year;
+
+  my $t = $provided_date ? Time::Piece
+    ->strptime(
+      $provided_date,
+      "%F"
+     ) : localtime;
+  my $current_day = $t->day_of_year;
+
+  confess "No implemented, rdiy only work with current year at the moment" unless $t->year == $current_year;
+
+  my $days_in_year = $t->is_leap_year ? LEAP_YEAR_DAYS : COMMON_YEAR_DAYS;
+  my $remaining_days = $days_in_year - $current_day - 1;
+  return {
+    current   => $current_day,
+    request   => $t->ymd,
+    remaining => $remaining_days,
+    year      => $t->year,
+  };
+}
+
+sub display_report ($year_data, $verbose) {
+  say "rdiy version $VERSION" and
+    say "Request for $year_data->{request}",  and
+    say "This is day $year_data->{current}" if $verbose;
+  say "$year_data->{remaining} days to end of the year";
+}
+
+__END__
+
+=head1 NAME
+
+rdiy - Remaining Days In Year
+
+=head1 SYNOPSIS
+
+  rdiy --date 2022-07-17
+  167 days to end of the year
+
+=head1 USAGE
+
+rdiy [options]
+
+ Options:
+   --date            date for which you want remaining days before end of year
+   --help            brief help message
+   --man             full documentation
+   --verbose         display more data
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-d, --date>
+
+Base date to use for the calculation. Note that at the moment, it only works
+with dates withing current year.
+
+=item B<-h, --help>
+
+Print a brief help message and exits.
+
+=item B<-m, --man>
+
+Prints the manual page and exits.
+
+=item B<-v, --verbose>
+
+Print a complete report.
+
+=back
+
+=head1 DESCRIPTION
+
+B<rdiy> calculate the number of days remaining until the end of current year.
+Current day is used if no C<-date> parameter is provided.
+
+=head1 SEE ALSO
+
+This program was written as a code example for the Why Perl is still relevant in
+2022 article published on stackoverflow.blog.
+
+See https://stackoverflow.blog/2022/07/06/why-perl-is-still-relevant-in-2022
+
+=cut
+
+1;
