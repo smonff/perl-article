@@ -12,7 +12,7 @@ use Getopt::Long qw(GetOptions);
 use Pod::Usage;
 use Time::Piece;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use constant {
   LEAP_YEAR_DAYS   => 366,
@@ -27,8 +27,8 @@ sub run {
   my $man = 0;
   my $verbose = '';
   GetOptions (
-    "date:s" => \$date,
-    'help|?' => \$help,
+    "date:s"  => \$date,
+    'help|?'  => \$help,
     'man'     => \$man,
     "verbose" => \$verbose,
   );
@@ -57,12 +57,13 @@ sub calculate_number_of_days_left_for_year ($provided_date) {
       $provided_date,
       "%F"
      ) : localtime;
-  my $current_day = $t->day_of_year;
 
+  my $current_day = $t->day_of_year;
   confess "No implemented, rdiy only work with current year at the moment" unless $t->year == $current_year;
 
   my $days_in_year = $t->is_leap_year ? LEAP_YEAR_DAYS : COMMON_YEAR_DAYS;
   my $remaining_days = $days_in_year - $current_day - 1;
+
   return {
     current   => $current_day,
     request   => $t->ymd,
@@ -98,6 +99,21 @@ rdiy [options]
    --help            brief help message
    --man             full documentation
    --verbose         display more data
+
+=head1 OBJECTIVES
+
+This simple program was written as a demonstration of how to quickly scafold a
+Perl application. It address topics such as:
+
+=over 8
+
+=item command line
+
+=item manipulating dates
+
+=item documentation through L<C<perlpod>> and man pages
+
+=back
 
 =head1 OPTIONS
 
